@@ -30,7 +30,7 @@ export default function NzHerald() {
   ];
 
   return (
-    <Box>
+    <Box sx={{ padding: 2 }}>
       <Stack spacing={2}>
         {itemElements.map((item) => (
           <Item key={item.id} elevation={3}>

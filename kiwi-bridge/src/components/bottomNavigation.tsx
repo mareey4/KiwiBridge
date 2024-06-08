@@ -3,28 +3,16 @@
 import * as React from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import FolderIcon from "@mui/icons-material/Folder";
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import {
-  ContactSupport,
-  Contacts,
-  Newspaper,
-  Person,
-  QuestionAnswer,
-} from "@mui/icons-material";
+import { ContactSupport, Newspaper, Person, QuestionAnswer } from "@mui/icons-material";
 import { Paper } from "@mui/material";
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 export default function LabelBottomNavigation() {
-  const [value, setValue] = React.useState("recents");
-
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
-  };
-
+  const pathname = usePathname();
+  
   return (
-    <Paper sx={{ position: "fixed" }}>
+    <Paper sx={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 1000 }}>
       <BottomNavigation
         sx={{
           position: "fixed",
@@ -33,31 +21,41 @@ export default function LabelBottomNavigation() {
           transform: "translateX(-50%)",
           width: "100%",
           maxWidth: "600px",
-          zIndex: 1000,
         }}
-        value={value}
-        onChange={handleChange}
+        value={pathname}
       >
-        <BottomNavigationAction
-          label="Need Help?"
-          value="Need Help?"
-          icon={<ContactSupport />}
-        />
-        <BottomNavigationAction
-          label="Connections"
-          value="Connections"
-          icon={<QuestionAnswer />}
-        />
-        <BottomNavigationAction
-          label="Resources"
-          value="Resources"
-          icon={<Newspaper />}
-        />
-        <BottomNavigationAction
-          label="Profile"
-          value="Profile"
-          icon={<Person />}
-        />
+        <Link href="/help" passHref>
+          <BottomNavigationAction
+            label="Need Help?"
+            value="/help"
+            icon={<ContactSupport />}
+            sx={{ color: pathname === '/help' ? 'primary.main' : 'text.secondary' }}
+          />
+        </Link>
+        <Link href="/connections" passHref>
+          <BottomNavigationAction
+            label="Connections"
+            value="/connections"
+            icon={<QuestionAnswer />}
+            sx={{ color: pathname === '/connections' ? 'primary.main' : 'text.secondary' }}
+          />
+        </Link>
+        <Link href="/resource" passHref>
+          <BottomNavigationAction
+            label="Resource"
+            value="/resource"
+            icon={<Newspaper />}
+            sx={{ color: pathname === '/resource' ? 'primary.main' : 'text.secondary' }}
+          />
+        </Link>
+        <Link href="/profile" passHref>
+          <BottomNavigationAction
+            label="Profile"
+            value="/profile"
+            icon={<Person />}
+            sx={{ color: pathname === '/profile' ? 'primary.main' : 'text.secondary' }}
+          />
+        </Link>
       </BottomNavigation>
     </Paper>
   );

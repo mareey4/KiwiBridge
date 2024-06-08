@@ -54,24 +54,24 @@ export default function BasicTabs() {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="NZ Herald" {...a11yProps(0)} />
-          <Tab label="News Hub" {...a11yProps(1)} />
-          <Tab label="Stuff" {...a11yProps(2)} />
-          <Tab label="1News" {...a11yProps(3)} />
+            <Tab label="NZ Herald" {...a11yProps(0)} />
+            <Tab label="News Hub" {...a11yProps(1)} />
+            <Tab label="Stuff" {...a11yProps(2)} />
+            <Tab label="1News" {...a11yProps(3)} />
         </Tabs>
       </Box>
       <BasicMenu />
       <CustomTabPanel value={value} index={0}>
-        <NzHerald></NzHerald>
+        <NzHerald />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <NewsHub></NewsHub>
+        <NewsHub />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <Stuff></Stuff>
+        <Stuff />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
-        <OneNews></OneNews>
+        <OneNews />
       </CustomTabPanel>
     </Box>
   );
