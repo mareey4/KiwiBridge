@@ -17,7 +17,16 @@ export default function LabelBottomNavigation() {
   };
 
   return (
-    <BottomNavigation sx={{ width: "100%" }} value={value} onChange={handleChange}>
+    <BottomNavigation
+      sx={{
+        position: 'fixed',
+        bottom: 0,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '100%',
+        maxWidth: '600px', 
+        zIndex: 1000 
+      }} value={value} onChange={handleChange}>
       <BottomNavigationAction
         label="Need Help?"
         value="Need Help?"
