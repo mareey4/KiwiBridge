@@ -1,13 +1,14 @@
-"use client"
+"use client";
 
-import * as React from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
-import NzHerald from './nzHerald';
-import NewsHub from './newsHub';
-import Stuff from './stuff';
-import OneNews from './oneNews';
+import * as React from "react";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Box from "@mui/material/Box";
+import NzHerald from "./nzHerald";
+import NewsHub from "./newsHub";
+import Stuff from "./stuff";
+import OneNews from "./oneNews";
+import BasicMenu from "./dropdown";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -34,7 +35,7 @@ function CustomTabPanel(props: TabPanelProps) {
 function a11yProps(index: number) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
@@ -46,15 +47,20 @@ export default function BasicTabs() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+    <Box sx={{ width: "100%" }}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+        >
           <Tab label="NZ Herald" {...a11yProps(0)} />
           <Tab label="News Hub" {...a11yProps(1)} />
           <Tab label="Stuff" {...a11yProps(2)} />
           <Tab label="1News" {...a11yProps(3)} />
         </Tabs>
       </Box>
+      <BasicMenu />
       <CustomTabPanel value={value} index={0}>
         <NzHerald></NzHerald>
       </CustomTabPanel>
