@@ -5,6 +5,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import NzHerald from './nzHerald';
+import NewsHub from './newsHub';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -56,7 +57,7 @@ export default function BasicTabs() {
         <NzHerald></NzHerald>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+        <NewsHub></NewsHub>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         Item Three
