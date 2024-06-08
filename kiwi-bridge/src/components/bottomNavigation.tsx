@@ -23,6 +23,7 @@ export default function LabelBottomNavigation() {
           maxWidth: "600px",
         }}
         value={pathname}
+        
       >
         <Link href="/help" passHref>
           <BottomNavigationAction
@@ -30,6 +31,8 @@ export default function LabelBottomNavigation() {
             value="/help"
             icon={<ContactSupport />}
             sx={{ color: pathname === '/help' ? 'primary.main' : 'text.secondary' }}
+            title="Need Help?"
+
           />
         </Link>
         <Link href="/connections" passHref>
@@ -51,10 +54,10 @@ export default function LabelBottomNavigation() {
         <Link href="/profile" passHref>
           <BottomNavigationAction
             label="Profile"
-            value="/profile"
+            value="Profile"
             icon={<Person />}
             sx={{ color: pathname === '/profile' ? 'primary.main' : 'text.secondary' }}
-          />
+          />   
         </Link>
       </BottomNavigation>
     </Paper>
