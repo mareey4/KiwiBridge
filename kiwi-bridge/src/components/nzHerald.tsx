@@ -1,41 +1,50 @@
-import Image from "next/image";
-import nzHerald from "../../public/nzHerald1.png";
-import { Paper } from "@mui/material";
+import * as React from 'react';
+import Image from 'next/image';
+import nzHerald from '../../public/nzHerald1.png';
+import { Paper, Box, Stack } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+  display: 'flex',
+  alignItems: 'center',
+  marginBottom: theme.spacing(2),
+}));
 
 export default function NzHerald() {
   interface Item {
     id: number;
     content: string;
   }
+
   const itemElements: Item[] = [
-    {
-      id: 1,
-      content: "lorem",
-    },
-    { id: 2, content: "lorem" },
-    { id: 3, content: "lorem" },
-    {
-      id: 4,
-      content: "lorem",
-    },
-    { id: 5, content: "lorem" },
+    { id: 1, content: 'Lorem ipsum dolor sit amet.' },
+    { id: 2, content: 'Consectetur adipiscing elit.' },
+    { id: 3, content: 'Integer nec odio.' },
+    { id: 4, content: 'Praesent libero.' },
+    { id: 5, content: 'Sed cursus ante dapibus diam.' },
   ];
+
   return (
-    <div>
-      <ul>
+    <Box sx={{ padding: 2 }}>
+      <Stack spacing={2}>
         {itemElements.map((item) => (
-          <>
-            <Paper elevation={3}>
-              <Image
-                src={nzHerald.src}
-                width={200}
-                height={150}
-                alt="Picture of a world"
-              />
-            </Paper>
-          </>
+          <Item key={item.id} elevation={3}>
+            <Image
+              src={nzHerald.src}
+              width={150}
+              height={100}
+              alt="Picture of a world"
+              style={{ marginRight: 16 }}
+            />
+            <span>{item.content}</span>
+          </Item>
         ))}
-      </ul>
-    </div>
+      </Stack>
+    </Box>
   );
 }
